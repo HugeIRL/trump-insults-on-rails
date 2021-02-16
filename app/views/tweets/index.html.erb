@@ -1,7 +1,28 @@
-<h1>Tweets</h1>
-<ul>
 <% @tweets.each do |tweet| %>
-  <li><%= link_to tweet.message, tweet %></li>
-<% end %>
-</ul>
+<div class="card mb-5">
+  <h5 class="card-header fw-bolder bg-white py-3 ps-4">
+    Tweet
+  </h5>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-auto">
+        <img src="https://cdn.geekwire.com/wp-content/uploads/2017/06/trumptwitter.jpg" width="50px" height="50px" class="rounded-circle">
+      </div>
+      <div class="col px-0">
+        <p class="card-title fw-bold mb-0">Donald J. Trump</p>
+        <p class="card-title text-secondary"><small>@realDonaldTrump</small></p>
+      </div>
+    </div>
 
+    <p class="card-text fs-5"><%= tweet.message %></p>
+    <div class="row">
+      <small class="card-title text-secondary ml-4"><%= tweet.date.strftime("%b %d, %Y") %> &bull;
+      <%= link_to "View Target", tweet.target %> &bull;
+      <%= link_to "View Insult", tweet.insult %>
+      </small>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<%= paginate @tweets %>

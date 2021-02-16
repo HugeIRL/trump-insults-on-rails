@@ -23,7 +23,7 @@ tweets.each do |t|
         target:  target,
         insult:  insult
       )
-      puts "Invalid tweet #{t['tweet']}" unless tweet&.valid?
+      puts "Invalid or duplicate tweet: #{t['tweet']}" unless tweet&.valid?
     else
       puts "Invalid insult: #{t['insult']} for tweet: #{t['tweet']}"
     end

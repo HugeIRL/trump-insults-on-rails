@@ -1,0 +1,7 @@
+<h1>Insults</h1>
+<ul>
+<% @insults.each do |insult| %>
+  <li><%= link_to insult.text, insult %></li>
+<% end %>
+</ul>
+

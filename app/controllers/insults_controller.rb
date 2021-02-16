@@ -1,6 +1,6 @@
 class InsultsController < ApplicationController
   def index
-    @insults = Insult.all
+    @insults = Insult.page(params[:page]).per(10)
   end
 
   def show

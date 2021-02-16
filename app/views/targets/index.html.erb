@@ -1,7 +1,10 @@
-<h1>Targets</h1>
-<ul>
-<% @targets.each do |target| %>
-  <li><%= link_to target.prey, target %></li>
-<% end %>
-</ul>
+<div class="mb-4" style="width: 21.7rem;">
+  <ul class="list-group list-group-flush">
+  <% @targets.each do |target| %>
+    <li class="list-group-item"><%= link_to target.prey.gsub('-', ' ').titleize, target %></li>
+  <% end %>
+  </ul>
+</div>
+
+<%= paginate @targets %>
 

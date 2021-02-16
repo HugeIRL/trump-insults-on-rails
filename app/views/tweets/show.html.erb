@@ -1,6 +1,13 @@
-<h1><%= link_to 'See all the tweets', tweets_path %></h1>
-<ul>
-<li>Tweet: <%= @tweet.message %></li>
-<li><%= link_to @tweet.target.prey,  @tweet.target %></li>
-<li><%= link_to @tweet.insult.text,  @tweet.insult %></li>
-</ul>
+<div class="card">
+  <div class="card-header bg-white">
+    Target: <%= link_to @tweet.target.prey.gsub('-', ' ').titleize,  @tweet.target %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= link_to @tweet.insult.text,  @tweet.insult %></h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <p>
+    <small class="card-text text-secondary">Remember, he was the President.</small>
+    </p>
+    <a href="<%= tweets_path %>" class="btn btn-success">Back</a>
+  </div>
+</div>

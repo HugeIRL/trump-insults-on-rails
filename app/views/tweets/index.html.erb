@@ -1,5 +1,7 @@
+<%= paginate @tweets %>
+
 <% @tweets.each do |tweet| %>
-<div class="card mb-5">
+<div class="card my-5">
   <h5 class="card-header fw-bolder bg-white py-3 ps-4">
     Tweet
   </h5>
@@ -16,13 +18,11 @@
 
     <p class="card-text fs-5"><%= tweet.message %></p>
     <div class="row">
-      <small class="card-title text-secondary ml-4"><%= tweet.date.strftime("%b %d, %Y") %> &bull;
-      <%= link_to "View Target", tweet.target %> &bull;
-      <%= link_to "View Insult", tweet.insult %>
+      <small class="card-title text-secondary ml-4">
+        <%= link_to "View Details", tweet %> &bull;
+        <%= tweet.date.strftime("%b %d, %Y") %>
       </small>
     </div>
   </div>
 </div>
 <% end %>
-
-<%= paginate @tweets %>

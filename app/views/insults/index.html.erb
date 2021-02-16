@@ -1,7 +1,17 @@
-<h1>Insults</h1>
-<ul>
+<%= paginate @insults %>
+
 <% @insults.each do |insult| %>
-  <li><%= link_to insult.text, insult %></li>
+<div class="card mb-3">
+  <div class="card-body">
+    <figure class="text-center">
+      <blockquote class="blockquote">
+        <p>" <%= link_to insult.text, insult %> "</p>
+      </blockquote>
+      <figcaption class="blockquote-footer">
+        Donald J. Trump <cite title="Source Title">Former President, USA</cite>
+      </figcaption>
+    </figure>
+  </div>
+</div>
 <% end %>
-</ul>
 

@@ -1,0 +1,7 @@
+<h1>Tweets</h1>
+<ul>
+<% @tweets.each do |tweet| %>
+  <li><%= link_to tweet.message, tweet %></li>
+<% end %>
+</ul>
+

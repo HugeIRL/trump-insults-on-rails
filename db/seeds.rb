@@ -1,3 +1,13 @@
+# For this assignment, I will be using Trump's tweet data from Kaggle.
+# It is organized as one row with the following columns:
+# "#"(Number), date(DateTime), target(String), insult(String) and tweet(String).
+# I will build 3 models based off the tweet itself (with the time included)...
+# The target that the tweet was targetting as the second model...
+# And the insult that was used during the tweet.
+# I will primarily use a one to one relationship from the tweet to the insult and target,
+# But I will also use a many to one on the opposite side of the relationship
+# (from the target/insult) back to the tweet. This will allow me to use joins if required.
+
 require "csv"
 
 Tweet.delete_all

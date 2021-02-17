@@ -30,10 +30,15 @@
               <a class="nav-link btn btn-danger btn-sm px-3" href="/insults">🤬</a>
             </li>
           </ul>
-          <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-primary" type="submit">Search</button>
-          </form>
+          <%= form_tag(search_page_path, :method => "get",
+              class: 'd-flex') do %>
+            <div class="input-group">
+              <%= search_field_tag :search, params[:search], placeholder: "Search for an insult", class: "form-control" %>
+              <div class="input-group-btn">
+                <%= button_tag "Submit", :class => 'btn btn-primary', :name => nil %>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </nav>
@@ -41,5 +46,6 @@
     <div class="container">
       <%= yield %>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
   </body>
 </html>

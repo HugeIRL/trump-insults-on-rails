@@ -5,7 +5,7 @@
     <% @target.tweets.each do |target| %>
       <div class="card my-3">
         <div class="card-body">
-         <h4>🤬 " <span class="text-danger"><%= target.insults_list %></span> "</h4><br />
+         <h4>🤬 " <span class="text-danger"><%= link_to target.insults.first.text, target.insults.first %></span> "</h4><br />
           🐥 <%= link_to target.message, target %><br />
           <small class="text-muted"><%= target.date.strftime("%b %d, %Y") %></small>
         </div>

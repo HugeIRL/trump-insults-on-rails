@@ -1,6 +1,6 @@
 class InsultsController < ApplicationController
   def index
-    @insults = Insult.page(params[:page]).per(21)
+    @insults = Insult.includes(:tweets).page(params[:page]).per(21)
   end
 
   def show

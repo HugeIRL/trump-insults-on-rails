@@ -1,4 +1,7 @@
 <h1><%= link_to 'See all the prey', targets_path %></h1>
 <ul>
 <li>Prey: <%= @target.prey %></li>
+<% @target.tweets.each do |target| %>
+  <li>Found in Tweet: <%= link_to target.message, target %></li>
+<% end %>
 </ul>

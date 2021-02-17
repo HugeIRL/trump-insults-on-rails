@@ -1,7 +1,16 @@
-<h1><%= link_to 'See all the insults', insults_path %></h1>
-<ul>
-<li>Insult: <%= @insult.text %></li>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">🤬  " <%= @insult.text %> "</h5>
+    <hr>
 <% @insult.tweets.each do |insult| %>
-  <li>From Tweet: <%= link_to insult.message, insult %></li>
-<% end %>
-</ul>
+      <div class="card my-3">
+        <div class="card-body">
+         <h4>🐥 " <span class="text-danger"><%= link_to insult.message, insult %></span> "</h4>
+          <small class="text-muted"><%= insult.date.strftime("%b %d, %Y") %></small>
+        </div>
+      </div>
+    <% end %>
+    <hr>
+    <a href="<%= insults_path %>" class="btn btn-danger">View All 🤬</a>
+  </div>
+</div>

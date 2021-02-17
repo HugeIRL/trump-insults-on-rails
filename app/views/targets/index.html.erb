@@ -1,10 +1,14 @@
-<div class="mb-4" style="width: 21.7rem;">
-  <ul class="list-group list-group-flush">
-  <% @targets.each do |target| %>
-    <li class="list-group-item"><%= link_to target.prey.gsub('-', ' ').titleize, target %></li>
-  <% end %>
-  </ul>
-</div>
-
 <%= paginate @targets %>
+
+<div class="row">
+<% @targets.each do |target| %>
+  <div class="col-sm-4">
+    <div class="card mb-4">
+      <div class="card-body">
+        🚀 <%= link_to target.prey.gsub('-', ' ').titleize, target %>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
 

@@ -1,7 +1,17 @@
-<h1><%= link_to 'See all the prey', targets_path %></h1>
-<ul>
-<li>Prey: <%= @target.prey %></li>
-<% @target.tweets.each do |target| %>
-  <li>Found in Tweet: <%= link_to target.message, target %></li>
-<% end %>
-</ul>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">🚀 <%= @target.prey.gsub('-', ' ').titleize %></h5>
+    <hr>
+    <% @target.tweets.each do |target| %>
+      <div class="card my-3">
+        <div class="card-body">
+         <h4>🤬 " <span class="text-danger"><%= target.insults_list %></span> "</h4><br />
+          🐥 <%= link_to target.message, target %><br />
+          <small class="text-muted"><%= target.date.strftime("%b %d, %Y") %></small>
+        </div>
+      </div>
+    <% end %>
+    <hr>
+    <a href="<%= targets_path %>" class="btn btn-warning">View All 🚀 </a>
+  </div>
+</div>

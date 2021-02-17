@@ -1,4 +1,7 @@
 <h1><%= link_to 'See all the insults', insults_path %></h1>
 <ul>
 <li>Insult: <%= @insult.text %></li>
+<% @insult.tweets.each do |insult| %>
+  <li>From Tweet: <%= link_to insult.message, insult %></li>
+<% end %>
 </ul>

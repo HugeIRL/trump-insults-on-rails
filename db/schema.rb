@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_16_102846) do
+ActiveRecord::Schema.define(version: 2021_02_17_162122) do
 
   create_table "insults", force: :cascade do |t|
     t.string "text"
@@ -24,17 +24,25 @@ ActiveRecord::Schema.define(version: 2021_02_16_102846) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "tweet_insults", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "tweet_id", null: false
+    t.integer "insult_id", null: false
+    t.index ["insult_id"], name: "index_tweet_insults_on_insult_id"
+    t.index ["tweet_id"], name: "index_tweet_insults_on_tweet_id"
+  end
+
   create_table "tweets", force: :cascade do |t|
     t.datetime "date"
     t.string "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "target_id", null: false
-    t.integer "insult_id", null: false
-    t.index ["insult_id"], name: "index_tweets_on_insult_id"
     t.index ["target_id"], name: "index_tweets_on_target_id"
   end
 
-  add_foreign_key "tweets", "insults"
+  add_foreign_key "tweet_insults", "insults"
+  add_foreign_key "tweet_insults", "tweets"
   add_foreign_key "tweets", "targets"
 end

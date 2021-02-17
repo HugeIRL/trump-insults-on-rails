@@ -10,6 +10,7 @@
 
 require "csv"
 
+TweetInsult.delete_all
 Tweet.delete_all
 Target.delete_all
 Insult.delete_all
@@ -23,20 +24,25 @@ tweets = CSV.parse(csv_data, headers: true, encoding: "utf-8")
 
 tweets.each do |t|
   target = Target.find_or_create_by(prey: t["target"])
-  insult = Insult.find_or_create_by(text: t["insult"])
 
   if target && target&.valid?
-    if insult && insult&.valid?
-      tweet = Tweet.create(
-        date:    t["date"],
-        message: t["tweet"],
-        target:  target,
-        insult:  insult
-      )
-      puts "Invalid or duplicate tweet: #{t['tweet']}" unless tweet&.valid?
-    else
-      puts "Invalid insult: #{t['insult']} for tweet: #{t['tweet']}"
+    tweet = target.tweets.create(
+      date:    t["date"],
+      message: t["tweet"]
+    )
+    unless tweet&.valid?
+      puts "Invalid tweet: #{t['tweet']}"
+      next
     end
+
+    insults = t["insult"].split(",").map(&:strip)
+
+    insults.each do |insult_text|
+      insult = Insult.find_or_create_by(text: t["insult"])
+
+      TweetInsult.create(tweet: tweet, insult: insult)
+    end
+
   else
     puts "Invalid target: #{t['target']} for tweet: #{t['tweet']}"
   end
@@ -45,3 +51,4 @@ end
 puts "Created #{Tweet.count} tweets."
 puts "Created #{Target.count} targets."
 puts "Created #{Insult.count} insults."
+puts "Created #{TweetInsult.count} tweet insults."

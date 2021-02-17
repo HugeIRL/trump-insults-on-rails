@@ -13,7 +13,7 @@
   <div class="card-body">
     <h5 class="card-title">🚀 Target: <%= link_to @tweet.target.prey.gsub('-', ' ').titleize,  @tweet.target %></h5>
     <hr>
-    <h5 class="card-title">🤬 Insult: "<%= link_to @tweet.insult.text,  @tweet.insult %>"</h5>
+    <h5 class="card-title">🤬 Insult: " <span class="text-danger"><%= @tweet.insults_list %></span> "</h5>
     <hr>
     <a href="<%= tweets_path %>" class="btn btn-success">Back to Tweets</a>
   </div>

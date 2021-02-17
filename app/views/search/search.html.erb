@@ -1,9 +1,5 @@
 <h3 class="mb-3">Search Result</h3>
 
-  <% unless @results.each %>
-  Not found
-  <% end %>
-
   <% @results.each do |result| %>
-      <%= link_to result.text, result%><br>
+      <%= link_to result.text, result %><br>
   <% end %>

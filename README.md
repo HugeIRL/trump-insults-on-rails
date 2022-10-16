@@ -1,24 +1,63 @@
-# README
+# Trump Insults on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app was created as an intro project for the Full Stack Development course. It contains a website that live archives former President Donald Trumps insult tweets before he got banned from Twitter.
 
-Things you may want to cover:
+## Requirements
 
-* Ruby version
+Ruby (v2.7.2)
 
-* System dependencies
+Rails: (v3.1.2)
 
-* Configuration
+Yarn
 
-* Database creation
+Node
 
-* Database initialization
+## Setup
 
-* How to run the test suite
+First, you'll want to run:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+yarn install
+bundle install
+```
 
-* Deployment instructions
+This will grab all the dependencies.
 
-* ...
+## Usage
+
+You'll need to migrate the db for the project to work by running the following:
+
+```
+rake db:migrate
+```
+
+After migrating, you need to seed the database with data (if you want the tweets to load from the **.csv**):
+
+```
+rake db:seed
+```
+
+You will see the output of the seeding live in the terminal window. This may take some time.
+
+After the db migration and seed are complete, you can start the app by running the following:
+
+```
+rake assets:precompile
+```
+
+This will allow the image assets and CSS to load properly.
+
+Then, you can run the following to get the two servers for the application up:
+
+```
+rails s
+./bin/webpack-dev-server
+```
+
+I prefer running these two commands above in individual terminal instances, but you can do as you please at this point.
+
+Once everything is running, you can navigate to the link below to view the live app:
+
+```
+http://localhost:3000
+```
